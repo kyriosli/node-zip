@@ -155,6 +155,22 @@ ZipFile.prototype.entries = function () {
     return ret;
 };
 
+if (typeof Symbol === 'function' && Symbol.iterator) {
+    ZipFile.prototype[Symbol.iterator] = function () {
+        var keys = Object.keys(this), cursor = 0, len = keys.length, self = this;
+        return {
+            next: function () {
+                if (cursor === len) {
+                    return {done: true}
+                } else {
+                    var key = keys[cursor++];
+                    return {done: false, value: self[key]}
+                }
+            }
+        };
+    }
+}
+
 /**
  * default close method, do nothing
  */
