@@ -8,6 +8,7 @@ This projects intends to create/read [PKZIP](http://en.wikipedia.org/wiki/PKZIP)
 
 ## Usage
 
+```js
     var zip = require('node-zip');
     var zipFile = zip.create();
     // or
@@ -28,6 +29,7 @@ This projects intends to create/read [PKZIP](http://en.wikipedia.org/wiki/PKZIP)
         res.setHeader('Content-Length', zipEntry.originalSize);
         zipEntry.toReadStream().pipe(res);
     }
+```
 
 ## API Reference
 
