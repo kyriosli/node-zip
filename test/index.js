@@ -59,6 +59,7 @@ zipFile.zip().then(function (buffer) {
 
 }).then(function (zipFile) {
     zipFile.add('README.md', fs.readFileSync('README.md'));
+    zipFile.add('utf8/测试.txt', new Buffer('中文'));
     console.log('ZipFile(unzipped).add: ok');
     return zipFile.zip();
 }).then(function (buffer) {
